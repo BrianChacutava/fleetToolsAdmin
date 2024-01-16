@@ -14,7 +14,7 @@ class SignUp extends Component
 
     protected $rules = [
         'name' => 'required|min:3',
-        'email' => 'required|email:rfc,dns|unique:users',
+        'email' => 'required|unique:users',
         'password' => 'required|min:6'
     ];
 

@@ -7,16 +7,16 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Tools</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money</p>
                     <h5 class="font-weight-bolder mb-0">
-                      15
-                      <span class="text-success text-sm font-weight-bolder">+20%</span>
+                      $53,000
+                      <span class="text-success text-sm font-weight-bolder">+55%</span>
                     </h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="fas fa-tools text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -29,16 +29,16 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Equipments</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
                     <h5 class="font-weight-bolder mb-0">
-                      2
+                      2,300
                       <span class="text-success text-sm font-weight-bolder">+3%</span>
                     </h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="fa fa-industry text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -51,10 +51,10 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Worked Clients</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
                     <h5 class="font-weight-bolder mb-0">
-                      4
-                      <span class="text-danger text-sm font-weight-bolder">5%</span>
+                      +3,462
+                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
                     </h5>
                   </div>
                 </div>
