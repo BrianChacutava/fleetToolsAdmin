@@ -1,6 +1,5 @@
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
     <div class="container-fluid py-4">
-        <div class="row">
 
 
             <div class="row">
@@ -11,7 +10,7 @@
                                 <div>
                                     <h5 class="mb-0">All Tools</h5>
                                 </div>
-                                <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; New Tool</a>
+                                <a href="{{ route('tool-create') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; New Tool</a>
                             </div>
                         </div>
 
@@ -94,7 +93,8 @@
                     </div>
                 </div>
             </div>
+            {{-- @include('livewire.custumer.CreatCustumerModal') --}}
+            {{-- <livewire:tools.create-tool /> --}}
 
-        </div>
     </div>
 </main>

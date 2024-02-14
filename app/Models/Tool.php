@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Tool
- * 
+ *
  * @property int $id
  * @property string|null $name
  * @property string|null $make
@@ -28,7 +28,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $deleted_at
  * @property int $company_id
  * @property int|null $tool_group_id
- * 
+ *
  * @property Company $company
  * @property ToolGroup|null $tool_group
  * @property Collection|Stock[] $stocks
