@@ -20,14 +20,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $model
  * @property string|null $description
  * @property string|null $reference_num
- * @property string|null $quantity
+ * @property float|null $quantity
  * @property string|null $status
- * @property string|null $active
+ * @property int|null $active
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
  * @property int $company_id
  * @property int|null $product_group_id
+ * @property string|null $photo
  * 
  * @property Company $company
  * @property ProductGroup|null $product_group
@@ -41,6 +42,8 @@ class Product extends Model
 	protected $table = 'product';
 
 	protected $casts = [
+		'quantity' => 'float',
+		'active' => 'int',
 		'company_id' => 'int',
 		'product_group_id' => 'int'
 	];
@@ -55,7 +58,8 @@ class Product extends Model
 		'status',
 		'active',
 		'company_id',
-		'product_group_id'
+		'product_group_id',
+		'photo'
 	];
 
 	public function company()

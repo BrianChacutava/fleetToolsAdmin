@@ -13,22 +13,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Tool
- *
+ * 
  * @property int $id
  * @property string|null $name
  * @property string|null $make
  * @property string|null $model
  * @property string|null $reference_num
  * @property string|null $description
- * @property string|null $quantity
+ * @property float|null $quantity
  * @property string|null $status
- * @property string|null $active
+ * @property int|null $active
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
  * @property int $company_id
  * @property int|null $tool_group_id
- *
+ * @property string|null $photo
+ * 
  * @property Company $company
  * @property ToolGroup|null $tool_group
  * @property Collection|Stock[] $stocks
@@ -41,6 +42,8 @@ class Tool extends Model
 	protected $table = 'tools';
 
 	protected $casts = [
+		'quantity' => 'float',
+		'active' => 'int',
 		'company_id' => 'int',
 		'tool_group_id' => 'int'
 	];
@@ -55,7 +58,8 @@ class Tool extends Model
 		'status',
 		'active',
 		'company_id',
-		'tool_group_id'
+		'tool_group_id',
+		'photo'
 	];
 
 	public function company()

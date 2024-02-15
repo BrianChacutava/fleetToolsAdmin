@@ -2,8 +2,8 @@
     <div class="container-fluid" style="margin-top: 15%">
 
         <div class="card card-body blur shadow-blur mx-4 mt-n6">
-            <div class="row gx-4">
-                <div class="col-auto">
+            <div class="row ">
+                {{-- <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
                         <img src="../assets/img/tool.jpg" alt="..." class="w-100 border-radius-lg shadow-sm">
                         <a href="javascript:;"
@@ -11,8 +11,29 @@
                             <i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Edit Image"></i>
                         </a>
+
+                    </div>
+                </div> --}}
+
+                <div class="col-auto">
+                    <div class="position-relative" style="height: 2%;">
+                        <div class="col-md-4">
+                            @if ($photo)
+                                Photo Preview:
+
+                                <img src="{{ $photo->temporaryUrl() }}" class="w-100 border-radius-lg shadow-sm"
+                                    style="height: 100%;">
+                            @endif
+                        </div>
+                        <input type="file" wire:model="photo" >
+
+                        <div wire:loading wire:target="photo">Uploading...</div>
+                        @error('photo')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
+
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
@@ -34,25 +55,39 @@
             </div>
             <div class="card-body pt-4 p-3">
                 @if ($showDemoNotification)
-                <div wire:model="showDemoNotification" class="mt-3  alert alert-primary alert-dismissible fade show"
-                    role="alert">
-                    <span class="alert-text text-white">
-                        {{ __('You are in a demo version, you can\'t update the profile.') }}</span>
-                    <button wire:click="$set('showDemoNotification', false)" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                    </button>
-                </div>
-            @endif
+                    <div wire:model="showDemoNotification" class="mt-3  alert alert-primary alert-dismissible fade show"
+                        role="alert">
+                        <span class="alert-text text-white">
+                            {{ __('You are in a demo version, you can\'t update the profile.') }}</span>
+                        <button wire:click="$set('showDemoNotification', false)" type="button" class="btn-close"
+                            data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                @endif
 
-            @if ($showSuccesNotification)
-                <div wire:model="showSuccesNotification"
-                    class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
-                    <span class="alert-icon text-white"><i class="ni ni-like-2"></i></span>
-                    <span
-                        class="alert-text text-white">{{ __('Your profile information have been successfuly saved!') }}</span>
-                    <button wire:click="$set('showSuccesNotification', false)" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                    </button>
+                @if ($showSuccesNotification)
+                    <div wire:model="showSuccesNotification"
+                        class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
+                        <span class="alert-icon text-white"><i class="ni ni-like-2"></i></span>
+                        <span
+                            class="alert-text text-white">{{ __('Your profile information have been successfuly saved!') }}</span>
+                        <button wire:click="$set('showSuccesNotification', false)" type="button" class="btn-close"
+                            data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                @endif
+
+                <div>
+                    @if (session()->has('message'))
+
+                        <div class="alert alert-success">
+
+                            {{ session('message') }}
+
+                        </div>
+
+                    @endif
                 </div>
-            @endif
 
                 <form wire:submit.prevent="save" action="#" method="POST" role="form text-left">
                     <div class="row">
@@ -176,8 +211,8 @@
                                     </select>
 
                                 </div>
-                                <input wire:model="tools.active" class="form-control" type="hidden"
-                                    placeholder="1" id="active" value="1" disabled>
+                                <input wire:model="tools.active" class="form-control" type="hidden" placeholder="1"
+                                    id="active" value="1" disabled>
                             </div>
                         </div>
                     </div>
@@ -202,6 +237,7 @@
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4">{{ 'Save Changes' }}</button>
             </div>
+
             </form>
 
         </div>

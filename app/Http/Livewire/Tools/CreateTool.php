@@ -9,8 +9,9 @@ use Livewire\Component;
 use App\Models\ToolGroup;
 use GuzzleHttp\Psr7\Request;
 use App\Models\ToolsHasStock;
-use Illuminate\Support\Facades\Log;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Log;
+
 
 class CreateTool extends Component
 {
@@ -60,9 +61,12 @@ class CreateTool extends Component
 
     public function save()
     {
+
         if ($this->validate()) {
             $this->tools->active = 1;
+            $this->tools->photo = $this->photo->store('photos','public');
             $this->tools->save();
+
 
             if ($this->tools->quantity > 0) {
                 $addStock = ToolsHasStock::create([
@@ -75,11 +79,13 @@ class CreateTool extends Component
                     'employer_id' => 1
                 ]);
             }
+
+
             $this->showSuccesNotification = true;
+
+            session()->flash('message', 'Tools successfully created.');
             $tools = Tool::paginate(10);
-            return view('livewire.tools.tool-controll', [
-                "Tools" => $tools
-            ]);
+            return redirect()->to('/tools/tool-controll');
         } else {
             $this->showFailureNotification = true;
         }

@@ -19,6 +19,7 @@ use App\Http\Livewire\LaravelExamples\UserManagement;
 use App\Http\Livewire\Stock\StockControler;
 use App\Http\Livewire\Tools\CreateTool;
 use App\Http\Livewire\Tools\ToolControll;
+use App\Http\Livewire\Tools\ToolTable;
 use Illuminate\Http\Request;
 
 /*
@@ -57,5 +58,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/tools/tool-controll', ToolControll::class)->name('tool-list');
     Route::get('/tools/create-tool', CreateTool::class)->name('tool-create');
+    Route::get('/tools/Tool-Table', ToolTable::class)->name('Tool-Table');
+
     Route::get('/stock/stock-controler', StockControler::class)->name('stock-list');
 });

@@ -1,5 +1,6 @@
 <x-layouts.base>
     {{-- If the user is authenticated --}}
+    
     @auth()
         {{-- If the user is authenticated on the static sign up or the sign up page --}}
         @if (in_array(request()->route()->getName(),['static-sign-up', 'sign-up'],))
