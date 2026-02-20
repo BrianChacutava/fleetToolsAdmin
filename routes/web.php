@@ -21,6 +21,9 @@ use App\Http\Livewire\Tools\CreateTool;
 use App\Http\Livewire\Tools\ToolControll;
 use App\Http\Livewire\Tools\ToolRequest;
 use App\Http\Livewire\Tools\ToolTable;
+use App\Http\Livewire\CompaniesManager;
+use App\Http\Livewire\Companies\CreateCompany;
+use App\Http\Livewire\Companies\EditCompany;
 use Illuminate\Http\Request;
 
 /*
@@ -63,4 +66,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/tools/Tool-Request', ToolRequest::class)->name('Tool-Request');
 
     Route::get('/stock/stock-controler', StockControler::class)->name('stock-list');
+    Route::get('/companies', CompaniesManager::class)->name('companies.index');
+    Route::get('/companies/create', CreateCompany::class)->name('companies.create');
+    // Backwards-compatible redirect for old URL format '/companies/edit/{company}' → '/companies/{id}/edit'
+    Route::get('/companies/edit/{id}', function ($id) {
+        return redirect()->route('companies.edit', $id);
+    })->name('companies.edit.legacy');
+
+    Route::get('/companies/{id}/edit', EditCompany::class)->name('companies.edit');
 });
