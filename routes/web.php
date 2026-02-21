@@ -1,30 +1,29 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 use App\Http\Livewire\Auth\ForgotPassword;
+use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\ResetPassword;
 use App\Http\Livewire\Auth\SignUp;
-use App\Http\Livewire\Auth\Login;
-use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Billing;
+use App\Http\Livewire\Companies\CompanyEdit;
+use App\Http\Livewire\Companies\CreateCompany;
+use App\Http\Livewire\Companies\EditCompany;
+use App\Http\Livewire\CompaniesManager;
+use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\LaravelExamples\UserManagement;
+use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\Profile;
-use App\Http\Livewire\Tables;
+use App\Http\Livewire\Rtl;
 use App\Http\Livewire\StaticSignIn;
 use App\Http\Livewire\StaticSignUp;
-use App\Http\Livewire\Rtl;
-
-use App\Http\Livewire\LaravelExamples\UserProfile;
-use App\Http\Livewire\LaravelExamples\UserManagement;
 use App\Http\Livewire\Stock\StockControler;
+use App\Http\Livewire\Tables;
 use App\Http\Livewire\Tools\CreateTool;
 use App\Http\Livewire\Tools\ToolControll;
 use App\Http\Livewire\Tools\ToolRequest;
 use App\Http\Livewire\Tools\ToolTable;
-use App\Http\Livewire\CompaniesManager;
-use App\Http\Livewire\Companies\CreateCompany;
-use App\Http\Livewire\Companies\EditCompany;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,5 +72,7 @@ Route::middleware('auth')->group(function () {
         return redirect()->route('companies.edit', $id);
     })->name('companies.edit.legacy');
 
-    Route::get('/companies/{id}/edit', EditCompany::class)->name('companies.edit');
+    Route::get('/companies/edit', EditCompany::class)->name('companies.edit');
+    // Route::get('/companies/edit', CompanyEdit::class)->name('companies.edit');
+
 });

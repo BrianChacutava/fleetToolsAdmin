@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire\Companies;
 
+use App\Models\Company;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Models\Company;
-use Illuminate\Support\Facades\Storage;
 
 class EditCompany extends Component
 {
@@ -14,9 +15,10 @@ class EditCompany extends Component
     public $logo;
     public Company $company;
 
-    public function mount($id)
+    public function mount(Request $request)
     {
-        $this->company = Company::findOrFail($id);
+        // dd($request->input('id'));
+        $this->company = Company::findOrFail($request->input('id'));
     }
 
     protected $rules = [
