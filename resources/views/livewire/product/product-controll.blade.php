@@ -22,9 +22,9 @@
                         <div class="card-header pb-0">
                             <div class="d-flex flex-row justify-content-between">
                                 <div>
-                                    <h5 class="mb-0">All Tools</h5>
+                                    <h5 class="mb-0">All Equipments / Products</h5>
                                 </div>
-                                <a href="{{ route('tool-create') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button" >+&nbsp; New Tool</a>
+                                <a href="{{ route('product-create') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button" >+&nbsp; New Equipment</a>
                             </div>
                         </div>
 
@@ -53,14 +53,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($Tools as $tool)
+                                        @foreach ($Products as $product)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div>
-                                                            @if ($tool->photo)
+                                                            @if ($product->photo)
 
-                                                            <img src='{{ asset("storage/$tool->photo") }}'
+                                                            <img src='{{ asset("storage/$product->photo") }}'
                                                                 class="avatar avatar-sm me-3">
                                                             @else
 
@@ -69,18 +69,18 @@
                                                             @endif
                                                         </div>
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{ $tool->id }}</h6>
-                                                            <p class="text-xs text-secondary mb-0">{{ $tool->name }}
+                                                            <h6 class="mb-0 text-sm">{{ $product->id }}</h6>
+                                                            <p class="text-xs text-secondary mb-0">{{ $product->name }}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <p class="text-xs font-weight-bold mb-0">{{ $tool->make }}</p>
-                                                    <p class="text-xs text-secondary mb-0">{{ $tool->model }}</p>
+                                                    <p class="text-xs font-weight-bold mb-0">{{ $product->make }}</p>
+                                                    <p class="text-xs text-secondary mb-0">{{ $product->model }}</p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    @if ($tool->active == 1)
+                                                    @if ($product->active == 1)
                                                         <span class="badge badge-sm bg-gradient-success">existe</span>
                                                     @else
                                                         <span
@@ -89,11 +89,11 @@
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <span
-                                                        class="text-secondary text-xs font-weight-bold">{{ $tool->quantity }}</span>
+                                                        class="text-secondary text-xs font-weight-bold">{{ $product->quantity }}</span>
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <span
-                                                        class="text-secondary text-xs font-weight-bold">{{ $tool->created_at }}</span>
+                                                        class="text-secondary text-xs font-weight-bold">{{ $product->created_at }}</span>
                                                 </td>
                                                 <td class="text-center">
                                                     <a href="#" class="mx-3" data-bs-toggle="tooltip"
@@ -106,7 +106,7 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                        {{ $Tools->links() }}
+                                        {{ $Products->links() }}
                                     </tbody>
                                 </table>
                             </div>

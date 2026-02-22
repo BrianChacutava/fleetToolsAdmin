@@ -78,6 +78,17 @@
                     <span class="nav-link-text ms-1">Request Tool</span>
                 </a>
             </li>
+            <li class="nav-item pb-2">
+                <a class="nav-link {{ Route::currentRouteName() == 'Tool-Group' ? 'active' : '' }}"
+                    href="{{ route('Tool-Group') }}">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;" class="fa fa-box ps-2 pe-2 text-center
+                        {{ in_array(request()->route()->getName(),['Tool-Group']) ? 'text-white' : 'text-dark' }}"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Tool Group</span>
+                </a>
+            </li>
 
 {{--        ......................................................................................... --}}
 
@@ -85,23 +96,23 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Equipment Management</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'billing' ? 'active' : '' }}"
-                    href="{{ route('billing') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'product-list' ? 'active' : '' }}"
+                    href="{{ route('product-list') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center
-                        {{ in_array(request()->route()->getName(),['billing']) ? 'text-white' : 'text-dark' }}"></i>
+                        {{ in_array(request()->route()->getName(),['product-list']) ? 'text-white' : 'text-dark' }}"></i>
                     </div>
                     <span class="nav-link-text ms-1">List Equipment</span>
                 </a>
             </li>
             <li class="nav-item pb-2">
-                <a class="nav-link {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}"
-                    href="{{ route('profile') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'product-create' ? 'active' : '' }}"
+                    href="{{ route('product-create') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fa fa-plus ps-2 pe-2 text-center
-                        {{ in_array(request()->route()->getName(),['profile']) ? 'text-white' : 'text-dark' }}"></i>
+                        {{ in_array(request()->route()->getName(),['product-create']) ? 'text-white' : 'text-dark' }}"></i>
                     </div>
                     <span class="nav-link-text ms-1">Create Equipment</span>
                 </a>
@@ -115,6 +126,18 @@
                         {{ in_array(request()->route()->getName(),['tables']) ? 'text-white' : 'text-dark' }}"></i>
                     </div>
                     <span class="nav-link-text ms-1">Request Equipment</span>
+                </a>
+            </li>
+
+            <li class="nav-item pb-2">
+                <a class="nav-link {{ Route::currentRouteName() == 'Product-Group' ? 'active' : '' }}"
+                    href="{{ route('Product-Group') }}">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;" class="fa fa-box ps-2 pe-2 text-center
+                        {{ in_array(request()->route()->getName(),['Product-Group']) ? 'text-white' : 'text-dark' }}"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Equipment Group</span>
                 </a>
             </li>
 
@@ -183,7 +206,7 @@
                     href="{{ route('companies.index') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i style="font-size: 1rem;" class="fa fa-lg fa-building-o ps-2 pe-2 text-center
+                        <i style="font-size: 1rem;" class="fa fa-lg fa-building ps-2 pe-2 text-center
                         {{ in_array(request()->route()->getName(),['companies.index']) ? 'text-white' : 'text-dark' }}"></i>
                     </div>
                     <span class="nav-link-text ms-1">Company Management</span>

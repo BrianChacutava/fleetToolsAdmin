@@ -63,7 +63,7 @@
                                         <option value="0">Select Tecnition</option>
                                         @foreach ($TecnicalList as $Tecnition)
                                             <option value="{{ $Tecnition->id }}">{{ $Tecnition->first_name }}
-                                                {{ $tool->last_name }}</option>
+                                                {{ $Tecnition->last_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -72,9 +72,9 @@
                         <div class="row col-md-4">
                             <div class="form-group">
                                 <label for="Outtime" class="form-control-label">{{ __('Out Time') }}</label>
-                                <div class="@error('out.initial_time')border border-danger rounded-3 @enderror">
-                                    <input wire:model="out.initial_time" class="form-control" type="datetime-local">
-                                </div>
+                                {{-- <div class="@error('out.initial_time')border border-danger rounded-3 @enderror"> --}}
+                                    <input wire:model="dataHora" class="form-control" type="datetime-local" value="">
+                                {{-- </div> --}}
                             </div>
                         </div>
 

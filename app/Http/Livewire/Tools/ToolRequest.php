@@ -8,6 +8,7 @@ use App\Models\OperationOut;
 use App\Models\Stock;
 use App\Models\Tool;
 use App\Models\ToolsHasStock;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class ToolRequest extends Component
@@ -15,11 +16,13 @@ class ToolRequest extends Component
     public ToolsHasStock $req;
     public OperationOut $out;
     protected $paginationTheme = 'bootstrap';
+    public $dataHora;
 
     public function mount()
     {
         $this->req = new ToolsHasStock();
         $this->out = new OperationOut();
+        $this->dataHora = '';
     }
 
 
@@ -44,7 +47,7 @@ class ToolRequest extends Component
         'req.quantity' => 'min:1',
         'req.employer_id' => 'min:1',
         'out.description' => 'min:10',
-        'out.initial_time' => 'date',
+        'dataHora' => 'required|date',
         'out.company_id' => 'min:1'
     ];
 
@@ -66,11 +69,11 @@ class ToolRequest extends Component
                 $this->req->operation_out_id = $this->saveOperationOut($this->req)->id;
                 $this->req->save();
 
+                $this->showSuccesNotification = true;
             } else {
                 $this->showFailureNotification = true;
             }
 
-            $this->showSuccesNotification = true;
         }
     }
 
@@ -78,10 +81,10 @@ class ToolRequest extends Component
     {
 
         $this->out->status = 'out';
-
+$data = Carbon::parse($this->dataHora)->format('Y-m-d\TH:i');
         return $addStock = OperationOut::create([
             'description' => $this->out->description,
-            'initial_time' => $this->out->initial_time,
+            'initial_time' => $data,
             // 'finish_time' => $this->out->finish_time,
             'status' => $this->out->status,
             'company_id' => $this->out->company_id,

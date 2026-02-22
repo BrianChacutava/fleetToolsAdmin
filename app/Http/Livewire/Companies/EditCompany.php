@@ -47,6 +47,15 @@ class EditCompany extends Component
         return redirect()->route('companies.index');
     }
 
+    public function delete($id)
+    {
+        $company = Company::findOrFail($id);
+
+        $company->delete();
+        session()->flash('message', 'Empresa apagada com sucesso.');
+        return redirect()->route('companies.index');
+    }
+
     public function removeLogo()
     {
         if ($this->company->logo && Storage::disk('public')->exists($this->company->logo)) {

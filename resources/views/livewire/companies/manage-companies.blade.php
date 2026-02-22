@@ -90,12 +90,12 @@
                                                         <button type="submit" class="btn btn-sm btn-outline-primary d-inline-flex align-items-center justify-content-center"
                                                         style="width:20px; height:20px;">
                                                             <i class="fas fa-edit"></i>
-                                                            
+
                                                         </button>
                                                     </form>
 
-                                                    <a href="#"
-                                                        wire:click.prevent="confirmDelete({{ $company->id }})"
+                                                    <a href="{{ route('companies.delete', ['id' => $company->id]) }}"
+                                                        onclick="return confirm('Tem certeza que deseja apagar esta empresa?')"
                                                         class="btn btn-sm btn-outline-danger d-inline-flex align-items-center justify-content-center"
                                                         style="width:20px; height:20px;" aria-label="Apagar">
                                                         <i class="fas fa-trash"></i>

@@ -10,8 +10,10 @@ class StockControler extends Component
 {
 
     public Stock $stocks;
+    public $showSuccesNotification = false;
 
-    public function mount() {
+    public function mount()
+    {
         $this->stocks = new Stock();
     }
     public function render()
@@ -19,12 +21,10 @@ class StockControler extends Component
         $companies = Company::all();
         $stockList = Stock::paginate(10);
 
-        return view('livewire.stock.stock-controler',compact('companies', 'stockList'));
+        return view('livewire.stock.stock-controler', compact('companies', 'stockList'));
     }
 
 
-    public $showSuccesNotification  = false;
-    public $showFailureNotification = false;
 
     protected $rules = [
         'stocks.name' => 'max:40|min:3',
@@ -36,19 +36,27 @@ class StockControler extends Component
     public function save()
     {
 
-        if($this->validate()){
+        $this->validate();
         $this->stocks->save();
-            $this->showSuccesNotification = true;
-        }else{
-            $this->showFailureNotification = true;
 
-        }
+
+        $this->showSuccesNotification = true;
+        session()->flash('message', 'Company criada com sucesso.');
 
 
         $companies = Company::all();
-        return view('livewire.stock.stock-controler',compact('companies'));
+        return view('livewire.stock.stock-controler', compact('companies'));
 
         // ...
     }
 
+
+    public function delete($id)
+    {
+        $stock = Stock::findOrFail($id);
+
+        $stock->delete();
+        session()->flash('message', 'Stock apagado com sucesso.');
+        return redirect()->route('stock.index');
+    }
 }

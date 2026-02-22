@@ -12,6 +12,10 @@ use App\Http\Livewire\CompaniesManager;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\LaravelExamples\UserManagement;
 use App\Http\Livewire\LaravelExamples\UserProfile;
+use App\Http\Livewire\Product\ProductControll;
+use App\Http\Livewire\Product\ProductCreate;
+use App\Http\Livewire\Product\ProductGroupControll;
+use App\Http\Livewire\Product\ProductGroupCreate;
 use App\Http\Livewire\Profile;
 use App\Http\Livewire\Rtl;
 use App\Http\Livewire\StaticSignIn;
@@ -20,8 +24,10 @@ use App\Http\Livewire\Stock\StockControler;
 use App\Http\Livewire\Tables;
 use App\Http\Livewire\Tools\CreateTool;
 use App\Http\Livewire\Tools\ToolControll;
+use App\Http\Livewire\Tools\ToolGroupForm;
 use App\Http\Livewire\Tools\ToolRequest;
 use App\Http\Livewire\Tools\ToolTable;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -60,9 +66,18 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/tools/tool-controll', ToolControll::class)->name('tool-list');
+    Route::get('/tools/tool-group', \App\Http\Livewire\Tools\ToolGroupControll::class)->name('Tool-Group');
+    Route::get('/tools/tool-group-create', ToolGroupForm::class)->name('Tool-Group.create');
+    Route::get('/tools/tool-group/{id}/edit', \App\Http\Livewire\Tools\ToolGroupForm::class)->name('Tool-Group.edit');
     Route::get('/tools/create-tool', CreateTool::class)->name('tool-create');
     Route::get('/tools/Tool-Table', ToolTable::class)->name('Tool-Table');
     Route::get('/tools/Tool-Request', ToolRequest::class)->name('Tool-Request');
+
+    Route::get('/product/product-controll', ProductControll::class)->name('product-list');
+    Route::get('/product/product-create', ProductCreate::class)->name('product-create');
+    Route::get('/product/product-group', ProductGroupControll::class)->name('Product-Group');
+    Route::get('/product/product-group-create', ProductGroupCreate::class)->name('Product-Group.create');
+
 
     Route::get('/stock/stock-controler', StockControler::class)->name('stock-list');
     Route::get('/companies', CompaniesManager::class)->name('companies.index');
@@ -73,6 +88,7 @@ Route::middleware('auth')->group(function () {
     })->name('companies.edit.legacy');
 
     Route::get('/companies/edit', EditCompany::class)->name('companies.edit');
+    Route::get('/companies/delete/{id}', [EditCompany::class, 'delete'])->name('companies.delete');
     // Route::get('/companies/edit', CompanyEdit::class)->name('companies.edit');
 
 });
