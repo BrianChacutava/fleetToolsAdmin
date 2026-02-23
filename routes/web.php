@@ -16,6 +16,8 @@ use App\Http\Livewire\Product\ProductControll;
 use App\Http\Livewire\Product\ProductCreate;
 use App\Http\Livewire\Product\ProductGroupControll;
 use App\Http\Livewire\Product\ProductGroupCreate;
+use App\Http\Livewire\Product\ProductReport;
+use App\Http\Livewire\Product\ProductRequest;
 use App\Http\Livewire\Profile;
 use App\Http\Livewire\Rtl;
 use App\Http\Livewire\StaticSignIn;
@@ -79,6 +81,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/product/product-create', ProductCreate::class)->name('product-create');
     Route::get('/product/product-group', ProductGroupControll::class)->name('Product-Group');
     Route::get('/product/product-group-create', ProductGroupCreate::class)->name('Product-Group.create');
+    Route::get('/product/product-request', ProductRequest::class)->name('Product-Request');
+    Route::get('/product/product-report', ProductReport::class)->name('product.report');
 
 
     Route::get('/stock/stock-controler', StockControler::class)->name('stock-list');

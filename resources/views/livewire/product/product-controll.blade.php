@@ -103,6 +103,18 @@
                                                     <span>
                                                         <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                                     </span>
+
+                                                     <form action="{{ route('product.report') }}"
+                                                        method="">
+                                                        <input type="hidden" name="productId"
+                                                            value="{{ $product->id }}">
+                                                        <button type="submit"
+                                                            class="btn btn-sm btn-outline-primary d-inline-flex align-items-center justify-content-center"
+                                                            >
+                                                            <i class="fas fa-book"></i>
+
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

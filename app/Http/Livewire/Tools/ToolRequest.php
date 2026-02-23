@@ -69,6 +69,12 @@ class ToolRequest extends Component
                 $this->req->operation_out_id = $this->saveOperationOut($this->req)->id;
                 $this->req->save();
 
+
+                // Reinicializa os objetos para próxima requisição
+            $this->req = new ToolsHasStock();
+            $this->out = new OperationOut();
+            $this->dataHora = '';
+
                 $this->showSuccesNotification = true;
             } else {
                 $this->showFailureNotification = true;
@@ -122,7 +128,7 @@ class ToolRequest extends Component
             $Last_operation_out = OperationOut::find($req->operation_out_id);
             $Last_operation_out->finish_time = now();
             $Last_operation_out->save();
-            
+
             $this->showSuccesNotification = true;
         } else {
             $this->showFailureNotification = true;
