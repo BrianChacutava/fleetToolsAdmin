@@ -73,7 +73,6 @@ class ToolRequest extends Component
             } else {
                 $this->showFailureNotification = true;
             }
-
         }
     }
 
@@ -81,7 +80,7 @@ class ToolRequest extends Component
     {
 
         $this->out->status = 'out';
-$data = Carbon::parse($this->dataHora)->format('Y-m-d\TH:i');
+        $data = Carbon::parse($this->dataHora)->format('Y-m-d\TH:i');
         return $addStock = OperationOut::create([
             'description' => $this->out->description,
             'initial_time' => $data,
@@ -89,13 +88,44 @@ $data = Carbon::parse($this->dataHora)->format('Y-m-d\TH:i');
             'status' => $this->out->status,
             'company_id' => $this->out->company_id,
         ]);
-
-
     }
     public function updateTool(Tool $tool, $new_qty)
     {
 
         $tool->quantity = $tool->quantity - $new_qty;
         $tool->save();
+    }
+
+    public function devolver($reqId)
+    {
+        $req = ToolsHasStock::find($reqId);
+
+        if ($req && $req->operation_type === 'O') {
+            $tool = Tool::find($req->tools_id);
+
+            // Atualiza quantidade da ferramenta (devolve ao estoque)
+            $tool->quantity = $tool->quantity + $req->quantity;
+            $tool->save();
+
+            // Atualiza registro da requisição para marcar como devolvido
+            $req->operation_type = 'E'; // "E" de entrada
+            $req->atual_qty = $tool->quantity;
+            $req->save();
+
+            // Cria operação de entrada
+            OperationOut::create([
+                'description' => 'Devolução da ferramenta: ' . $tool->name,
+                'initial_time' => now(),
+                'status' => 'in',
+                'company_id' => $req->stock->company_id ?? null,
+            ]);
+            $Last_operation_out = OperationOut::find($req->operation_out_id);
+            $Last_operation_out->finish_time = now();
+            $Last_operation_out->save();
+            
+            $this->showSuccesNotification = true;
+        } else {
+            $this->showFailureNotification = true;
+        }
     }
 }

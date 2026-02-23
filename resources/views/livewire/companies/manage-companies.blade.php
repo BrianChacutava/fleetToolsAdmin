@@ -78,11 +78,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="d-flex justify-content-center gap-2">
-                                                    {{-- <a href="{{ route('companies.edit', ['id' => $company->id]) }}"
-                                                        class="btn btn-sm btn-outline-primary d-inline-flex align-items-center justify-content-center"
-                                                        style="width:20px; height:20px;" aria-label="Editar">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a> --}}
+                                                    
                                                     <form action="{{ route('companies.edit', ['id' => $company->id]) }}" method="GET">
                                                         @csrf
                                                         <input type="hidden" name="id"

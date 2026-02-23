@@ -19,7 +19,8 @@
                                         <option value="0">Select Tools - Quantity</option>
                                         @foreach ($toolList as $tool)
                                             <option value="{{ $tool->id }}">
-                                                {{ $tool->tool_group->name }}-{{ $tool->name }} - {{ $tool->quantity }}</option>
+                                                {{ $tool->tool_group->name }}-{{ $tool->name }} -
+                                                {{ $tool->quantity }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -73,7 +74,7 @@
                             <div class="form-group">
                                 <label for="Outtime" class="form-control-label">{{ __('Out Time') }}</label>
                                 {{-- <div class="@error('out.initial_time')border border-danger rounded-3 @enderror"> --}}
-                                    <input wire:model="dataHora" class="form-control" type="datetime-local" value="">
+                                <input wire:model="dataHora" class="form-control" type="datetime-local" value="">
                                 {{-- </div> --}}
                             </div>
                         </div>
@@ -123,156 +124,156 @@
     <div class="container-fluid py-4">
 
 
-                <div class="card">
-                    <div class="card-header pb-0">
-                        <div class="d-flex flex-row justify-content-between">
-                            <div>
-                                <h5 class="mb-0">All Requests</h5>
-                            </div>
-
-                        </div>
+        <div class="card">
+            <div class="card-header pb-0">
+                <div class="d-flex flex-row justify-content-between">
+                    <div>
+                        <h5 class="mb-0">All Requests</h5>
                     </div>
 
-                    <div class="card-body">
-                        @if ($showSuccesNotification)
-                            <div wire:model="showSuccesNotification"
-                                class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
-                                <span class="alert-icon text-white"><i class="ni ni-like-2"></i></span>
-                                <span
-                                    class="alert-text text-white">{{ __('Your request information have been successfuly saved!') }}</span>
-                                <button wire:click="$set('showSuccesNotification', false)" type="button"
-                                    class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                                </button>
-                            </div>
-                        @endif
-                        @if ($showFailureNotification)
-                            <div wire:model="showFailureNotification"
-                                class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
-                                <span class="alert-text text-white">
-                                    {{ __('The quantity not mutch or is out of stock') }}
-                                <button wire:click="$set('showFailureNotification', false)" type="button"
-                                    class="btn-close" style="color: aliceblue" data-bs-dismiss="alert" aria-label="Close">
-                                </button>
-                            </div>
-                        @endif
-                        <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            #</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Tools</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Stock</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Operation type</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Operatin Quantity </th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Atual Quantity</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tecnition</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Date</th>
-                                        <th class="text-secondary opacity-7"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($requestList as $request)
-                                        <tr>
-
-                                            <td>
-                                                <p class="text-xs font-weight-bold mb-0">{{ $request->id }}</p>
-                                                {{-- <p class="text-xs text-secondary mb-0">{{ $tool->model }}</p> --}}
-                                            </td>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $request->tool->id }}</h6>
-                                                        <p class="text-xs text-secondary mb-0">
-                                                            {{ $request->tool->name }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $request->stock->id }}</h6>
-                                                        <p class="text-xs text-secondary mb-0">
-                                                            {{ $request->stock->name }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            @if ($request->operation_type == 'E')
-                                            <td>
-                                                <p class="text-xs font-weight-bold mb-0">
-                                                    Entry</p>
-                                                {{-- <p class="text-xs text-secondary mb-0">{{ $tool->model }}</p> --}}
-                                            </td>
-                                            @else
-                                            <td>
-                                                <p class="text-xs font-weight-bold mb-0">
-                                                    Out</p>
-                                                {{-- <p class="text-xs text-secondary mb-0">{{ $tool->model }}</p> --}}
-                                            </td>
-                                            @endif
-
-
-                                            <td class="align-middle text-center">
-                                                <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $request->quantity }}</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $request->atual_qty }}</span>
-                                            </td>
-
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $request->employer->id }}</h6>
-                                                        <p class="text-xs text-secondary mb-0">
-                                                            {{ $request->employer->first_name }}
-                                                            {{ $request->employer->last_name }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $request->created_at }}</span>
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="#" class="mx-3" data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Edit Stock">
-                                                    <i class="fas fa-edit text-secondary"></i>
-                                                </a>
-                                                <span>
-                                                    <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
+            </div>
+
+            <div class="card-body">
+                @if ($showSuccesNotification)
+                    <div wire:model="showSuccesNotification"
+                        class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
+                        <span class="alert-icon text-white"><i class="ni ni-like-2"></i></span>
+                        <span
+                            class="alert-text text-white">{{ __('Your request information have been successfuly saved!') }}</span>
+                        <button wire:click="$set('showSuccesNotification', false)" type="button" class="btn-close"
+                            data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                @endif
+                @if ($showFailureNotification)
+                    <div wire:model="showFailureNotification"
+                        class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
+                        <span class="alert-text text-white">
+                            {{ __('The quantity not mutch or is out of stock') }}
+                            <button wire:click="$set('showFailureNotification', false)" type="button"
+                                class="btn-close" style="color: aliceblue" data-bs-dismiss="alert"
+                                aria-label="Close">
+                            </button>
+                    </div>
+                @endif
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    #</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    Tools</th>
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Stock</th>
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Operation type</th>
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Operatin Quantity </th>
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Atual Quantity</th>
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Tecnition</th>
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Date</th>
+                                <th class="text-secondary opacity-7"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($requestList as $request)
+                                <tr>
+
+                                    <td>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $request->id }}</p>
+                                        {{-- <p class="text-xs text-secondary mb-0">{{ $tool->model }}</p> --}}
+                                    </td>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ $request->tool->id }}</h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ $request->tool->name }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ $request->stock->id }}</h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ $request->stock->name }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    @if ($request->operation_type == 'E')
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">
+                                                Entry</p>
+                                            {{-- <p class="text-xs text-secondary mb-0">{{ $tool->model }}</p> --}}
+                                        </td>
+                                    @else
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">
+                                                Out</p>
+                                            {{-- <p class="text-xs text-secondary mb-0">{{ $tool->model }}</p> --}}
+                                        </td>
+                                    @endif
+
+
+                                    <td class="align-middle text-center">
+                                        <span
+                                            class="text-secondary text-xs font-weight-bold">{{ $request->quantity }}</span>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <span
+                                            class="text-secondary text-xs font-weight-bold">{{ $request->atual_qty }}</span>
+                                    </td>
+
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ $request->employer->id }}</h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    {{ $request->employer->first_name }}
+                                                    {{ $request->employer->last_name }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <span
+                                            class="text-secondary text-xs font-weight-bold">{{ $request->created_at }}</span>
+                                    </td>
+                                    <td>{{ $request->operation_type == 'O' ? 'Retirada' : 'Devolução' }}</td>
+                                    <td>
+                                        @if ($request->operation_type === 'O')
+                                            <button wire:click="devolver({{ $request->id }})"
+                                                class="btn btn-success" type="submit">
+                                                Devolver
+                                            </button>
+                                        @endif
+                                    </td>
+
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

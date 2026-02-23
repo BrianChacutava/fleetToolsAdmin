@@ -25,6 +25,7 @@ use App\Http\Livewire\Tables;
 use App\Http\Livewire\Tools\CreateTool;
 use App\Http\Livewire\Tools\ToolControll;
 use App\Http\Livewire\Tools\ToolGroupForm;
+use App\Http\Livewire\Tools\ToolReport;
 use App\Http\Livewire\Tools\ToolRequest;
 use App\Http\Livewire\Tools\ToolTable;
 use App\Models\Product;
@@ -72,6 +73,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/tools/create-tool', CreateTool::class)->name('tool-create');
     Route::get('/tools/Tool-Table', ToolTable::class)->name('Tool-Table');
     Route::get('/tools/Tool-Request', ToolRequest::class)->name('Tool-Request');
+    Route::get('/tools/tool-report', ToolReport::class)->name('tool.report');
 
     Route::get('/product/product-controll', ProductControll::class)->name('product-list');
     Route::get('/product/product-create', ProductCreate::class)->name('product-create');
