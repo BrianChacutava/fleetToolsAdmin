@@ -10,6 +10,7 @@ use App\Http\Livewire\Companies\CreateCompany;
 use App\Http\Livewire\Companies\EditCompany;
 use App\Http\Livewire\CompaniesManager;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Employer\EmployerControll;
 use App\Http\Livewire\LaravelExamples\UserManagement;
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\Product\ProductControll;
@@ -96,5 +97,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/companies/edit', EditCompany::class)->name('companies.edit');
     Route::get('/companies/delete/{id}', [EditCompany::class, 'delete'])->name('companies.delete');
     // Route::get('/companies/edit', CompanyEdit::class)->name('companies.edit');
+
+    Route::get('/employer/employer-controll', EmployerControll::class)->name('employer-list');
 
 });

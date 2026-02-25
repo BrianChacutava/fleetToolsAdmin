@@ -191,12 +191,12 @@
                 </a>
             </li>
             <li class="nav-item pb-2">
-                <a class="nav-link {{ Route::currentRouteName() == 'user-management' ? 'active' : '' }}"
-                    href="{{ route('user-management') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'employer-list' ? 'active' : '' }}"
+                    href="{{ route('employer-list') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-users ps-2 pe-2 text-center
-                        {{ in_array(request()->route()->getName(),['user-management']) ? 'text-white' : 'text-dark' }}"></i>
+                        {{ in_array(request()->route()->getName(),['employer-list']) ? 'text-white' : 'text-dark' }}"></i>
                     </div>
                     <span class="nav-link-text ms-1">User Management</span>
                 </a>
