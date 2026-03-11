@@ -13,11 +13,17 @@
                         @else
                             <img src="../assets/img/bruce-mars.jpg" alt="..." class="w-100 border-radius-lg shadow-sm">
                         @endif
-                        <a href="javascript:;"
-                            class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
-                            <i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="Edit Image"></i>
-                        </a>
+                        <form class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n3 me-n4" action="{{ route('profile.update-photo') }}" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="photo" name="photo" >
+                            <button type="submit" class="btn btn-sm btn-icon-only bg-gradient-light "                               >
+                                <i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Edit Image"></i>
+                            </button>
+                        </form>
+                        {{-- <div wire:loading wire:target="photo">Uploading...</div> --}}
+
+                        </button>
                     </div>
                 </div>
                 <div class="col-auto my-auto">

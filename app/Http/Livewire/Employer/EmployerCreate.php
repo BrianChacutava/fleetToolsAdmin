@@ -49,7 +49,7 @@ class EmployerCreate extends Component
         'employer.identification_num' => 'min:3',
         'employer.adress' => 'max:40',
         'employer.phone1' => 'min:9|max:12',
-        'employer.badge_number' => 'min:4',
+        'employer.bage_number' => 'min:4',
         'employer.category_id' => 'max:10',
         'employer.company_id' => 'min:1',
         'photo' => 'image|max:1024', // 1MB Max
@@ -66,24 +66,28 @@ class EmployerCreate extends Component
             // $this->employer->photo = $this->photo->store('photos','public/employers');
             $this->employer->save();
 
-            dd($this->employer, $this->user);
-            $user = User::create([
-                'name' => $this->employer->first_name . ' ' . $this->employer->last_name,
-                'email' => $this->employer->email,
-                'password' => Hash::make($this->user->password),
-                'phone' => $this->employer->phone,
-                'location' => 0,
-                'photo' => $this->photo->store('photos', 'public/users'),
-                'company_id' => $this->employer->company_id,
-                'employer_id' => $this->employer->id
-            ]);
+            // dd($this->employer, $this->user);
+
+                $this->user->name = $this->employer->first_name . ' ' . $this->employer->last_name;
+                $this->user->email = $this->employer->email;
+                $this->user->password = Hash::make($this->user->password);
+                $this->user->phone = $this->employer->phone1;
+                $this->user->location = $this->employer->adress;
+                $this->user->photo = $this->photo->store('users', 'public');
+                $this->user->company_id = $this->employer->company_id;
+                $this->user->employer_id = $this->employer->id;
+                $this->user->save();
+                // dd($this->user);
+
 
 
             $this->showSuccesNotification = true;
 
             session()->flash('message', 'Employer successfully created.');
             $employer = Employer::paginate(10);
-            return redirect()->to('/employers/employer-controll');
+            return view('livewire.employer.employer-controll', [
+                "Employers" => $employer
+            ]);
 
 
             // ...
@@ -91,7 +95,6 @@ class EmployerCreate extends Component
             // Aqui você pode tratar os erros
             $this->showFailureNotification = true;
             $this->addError('validation', 'Verifique os campos obrigatórios.');
-            dd($this->employer, $this->user);
             $employer = Employer::paginate(10);
             return view('livewire.employer.employer-controll', [
                 "Employers" => $employer

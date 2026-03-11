@@ -60,7 +60,7 @@
                                                         <div>
                                                             @if ($employer->users->first()->photo)
 
-                                                            <img src='{{ asset("storage/$employer->users->first()->photo") }}'
+                                                            <img src="{{ asset('storage/' . $employer->users->first()->photo) }}"
                                                                 class="avatar avatar-sm me-3">
                                                             @else
 

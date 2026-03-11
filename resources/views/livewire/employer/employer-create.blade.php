@@ -177,11 +177,11 @@
                                 <div class="form-group">
                                     <label for="reference" class="form-control-label">{{ __('Bage Number') }}</label>
                                     <div
-                                        class="@error('employer.badge_number')border border-danger rounded-3 @enderror">
-                                        <input wire:model="employer.badge_number" class="form-control" type="text"
-                                            placeholder="Badge Number" id="badge_number">
+                                        class="@error('employer.bage_number')border border-danger rounded-3 @enderror">
+                                        <input wire:model="employer.bage_number" class="form-control" type="text"
+                                            placeholder="Bage Number" id="bage_number">
                                     </div>
-                                    @error('employer.badge_number')
+                                    @error('employer.bage_number')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
