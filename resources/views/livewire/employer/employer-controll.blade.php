@@ -24,7 +24,7 @@
                                 <div>
                                     <h5 class="mb-0">All Employers</h5>
                                 </div>
-                                <a href="{{ route('product-create') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button" >+&nbsp; New Employer</a>
+                                <a href="{{ route('employer.create') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button" >+&nbsp; New Employer</a>
                             </div>
                         </div>
 
